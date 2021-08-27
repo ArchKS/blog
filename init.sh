@@ -23,7 +23,7 @@ while read line;do
     fi
 
     if [[ -n $fname ]];then
-      echo "${construct}\n" >> $file_name
+      echo -en "${construct}\n" >> $file_name
     fi
   fi
 done < $file_name_bak
