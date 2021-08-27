@@ -6,7 +6,7 @@ prev_category="";
 
 # generate README.md
 echo "\`\`\`text" > $file_name
-tree -N -L 2 | grep -Ev 'img|files|init|README' >> $file_name
+tree -N -L 2 | grep -Ev 'img|init|README' >> $file_name
 echo "\`\`\`" >> $file_name
 cp $file_name $file_name_bak
 
