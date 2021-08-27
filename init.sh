@@ -29,6 +29,7 @@ while read line;do
 done < $file_name_bak
 
 rm -f $file_name_bak
+rm -f ./.init.sh.un~
 
 
 git add .
