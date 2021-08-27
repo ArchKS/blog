@@ -1,4 +1,5 @@
 #!/bin/bash
+# 2021-08-26 modify in iPhone
 file_name="README.md"
 file_name_bak="README.md.bak"
 prev_category="";
