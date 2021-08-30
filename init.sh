@@ -3,6 +3,9 @@ file_name="README.md"
 file_name_bak="README.md.bak"
 prev_category="";
 
+export https_proxy=127.0.0.1:7776
+export http_proxy=127.0.0.1:7776
+
 
 # generate README.md
 echo "\`\`\`text" > $file_name
@@ -37,4 +40,9 @@ git add .
 msg='zendu   '`date "+%Y-%m-%d %H:%M:%S"`;
 git commit -m "${msg}"
 git push 
+
+
+export https_proxy=
+export http_proxy=
+
 
