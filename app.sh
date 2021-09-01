@@ -13,6 +13,7 @@ rm -f $fileName
 entry(){
   echo $1
   echo $1 >> $fileName;
+  echo "" >> $fileName;
 }
 
 dateTime=`date "+%Y-%m-%d %H:%M:%S"`
