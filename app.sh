@@ -16,7 +16,7 @@ entry(){
 }
 
 dateTime=`date "+%Y-%m-%d %H:%M:%S"`
-entry "> zendu ${dateTime}"
+entry "> last update Zendu ${dateTime}"
 
 for dir in ${dirs};
 do
