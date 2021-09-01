@@ -34,6 +34,11 @@ while read line;do
   fi
 done < $file_name_bak
 
+num=`find ./* | grep -E "[^README]\.md$" | wc -l`
+info=`<div align="center">共计${num}篇文章</div>`
+sed -i '1i'${info} $file_name
+
+
 rm -f $file_name_bak
 rm -f ./.init.sh.un~
 
