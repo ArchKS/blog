@@ -1,55 +1,51 @@
-#!/bin/bash
-# 2021-08-26 modify in iPhone
-file_name="README.md"
-file_name_bak="README.md.bak"
-prev_category="";
 
 export https_proxy=127.0.0.1:7776
 export http_proxy=127.0.0.1:7776
 
 
-# generate README.md
-echo "\`\`\`text" > $file_name
-tree -N -L 2 | grep -Ev 'img|init|README' >> $file_name
-echo "\`\`\`" >> $file_name
-cp $file_name $file_name_bak
-rm $file_name
+# 判断当前目录
+# 遍历目录下的文章
 
-while read line;do
-  if [[ -n `echo "$line" | grep '\.md'` ]];then
-    suffix=`echo "$line" | awk -F '[「」]' '{print $2}'`
-    fname=`echo "$line"  | grep -Eo '「.*md$'`
-    path="./${suffix}/${fname}"
-    construct="[${fname}](${path})"
+dirs=`ls -d */ | sed "s#/##g"`
+fileCount=0
+fileName="README.md"
+rm -f $fileName
 
-    if [[ "$prev_category" != "$suffix" ]];then
-      echo "# ${suffix}" >> $file_name;
-      prev_category=$suffix;
-    fi
-
-    if [[ -n $fname ]];then
-      echo "${construct}" >> $file_name
-      echo "" >> $file_name
-    fi
-  fi
-done < $file_name_bak
-
-num=`find ./* | grep -E "[^README]\.md$" | wc -l`
-info=`<div align="center">共计${num}篇文章</div>`
-sed -i '1i'${info} $file_name
+entry(){
+  echo $1
+  echo $1 >> $fileName;
+  echo " " >> $fileName
+ }
 
 
-rm -f $file_name_bak
-rm -f ./.init.sh.un~
+for dir in ${dirs};
+do
+  entry "## ${dir}" 
+  mks=`ls ${dir}/*.md`
+  for mk in ${mks};
+  do
+    name=`echo $mk | awk -F '[/.]' '{print $2}'`
+    path=$mk
+    link="[$name](./${path})"
+    entry $link
+    let fileCount++
+  done
+  entry " "
+  entry " "
+done
 
+dateTime=`date "+%Y-%m-%d %H:%M"`
+echo "" >> $fileName
+entry "> Last Update  ${dateTime} , ${fileCount} Articles"
+rm -f .*\.un~ &> /dev/null
+rm -f .DS_Store &> /dev/null
 
+# push to github
+echo "\n"
 git add .
-msg='zendu   '`date "+%Y-%m-%d %H:%M:%S"`;
+msg='zendu   '`date "+%Y-%m-%d %H:%M:%S"` 
 git commit -m "${msg}"
-git push 
-
+git push
 
 export https_proxy=
 export http_proxy=
-
-
