@@ -34,8 +34,9 @@ do
 done
 
 dateTime=`date "+%Y-%m-%d %H:%M"`
+entry ""
 entry "<br/>"
-entry "<br/>"
+
 entry "> Last Update  ${dateTime} , ${fileCount} Articles"
 rm -f .*\.un~ &> /dev/null
 rm -f .DS_Store &> /dev/null
