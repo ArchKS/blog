@@ -14,7 +14,6 @@ rm -f $fileName
 entry(){
   echo $1
   echo $1 >> $fileName;
-  echo "" >> $fileName;
 }
 
 
@@ -25,7 +24,7 @@ do
   mks=`ls ${dir}/*.md`
   for mk in ${mks};
   do
-    name=`echo $mk | awk -F '[」.]' '{print $2}'`
+    name=`echo $mk | awk -F '[/.]' '{print $2}'`
     path=$mk
     link="[$name](./${path})"
     entry $link
@@ -39,8 +38,8 @@ dateTime=`date "+%Y-%m-%d %H:%M"`
 entry "<br/>"
 entry "<br/>"
 entry "> Last Update  ${dateTime} , ${fileCount} Articles"
-rm -f .*\.un~
-rm .DS_Store
+rm -f .*\.un~ &> /dev/null
+rm -f .DS_Store &> /dev/null
 
 # push to github
 echo "\n"
