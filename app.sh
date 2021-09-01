@@ -34,8 +34,8 @@ do
 done
 
 dateTime=`date "+%Y-%m-%d %H:%M"`
-entry ""
 entry "<br/>"
+entry ""
 
 entry "> Last Update  ${dateTime} , ${fileCount} Articles"
 rm -f .*\.un~ &> /dev/null
