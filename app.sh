@@ -16,7 +16,7 @@ entry(){
 }
 
 dateTime=`date "+%Y-%m-%d %H:%M:%S"`
-entry "> last update Zendu ${dateTime}"
+entry "> Last Update Zendu ${dateTime}"
 
 for dir in ${dirs};
 do
@@ -34,7 +34,7 @@ do
 done
 
 # push to github
-echo "\n\n\n\n"
+echo "\n\n"
 git add .
 msg='zendu   '`date "+%Y-%m-%d %H:%M:%S"` 
 git commit -m "${msg}"
