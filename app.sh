@@ -19,7 +19,6 @@ entry(){
 
 for dir in ${dirs};
 do
-  entry "<br/>"
   entry "## ${dir}" 
   mks=`ls ${dir}/*.md`
   for mk in ${mks};
