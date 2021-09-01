@@ -34,6 +34,8 @@ do
 done
 
 entry "> Last Update Zendu ${dateTime}"
+rm -f .*\.un~
+rm .DS_Store
 
 # push to github
 echo "\n"
