@@ -14,7 +14,8 @@ rm -f $fileName
 entry(){
   echo $1
   echo $1 >> $fileName;
-}
+  echo " " >> $fileName
+ }
 
 
 for dir in ${dirs};
@@ -34,9 +35,7 @@ do
 done
 
 dateTime=`date "+%Y-%m-%d %H:%M"`
-entry "<br/>"
-entry ""
-
+echo "" >> $fileName
 entry "> Last Update  ${dateTime} , ${fileCount} Articles"
 rm -f .*\.un~ &> /dev/null
 rm -f .DS_Store &> /dev/null
