@@ -9,7 +9,6 @@ export http_proxy=127.0.0.1:7776
 dirs=`ls -d */ | sed "s#/##g"`
 fileName="README.md"
 rm -f $fileName
-touch $fileName
 
 entry(){
   echo $1
@@ -17,7 +16,7 @@ entry(){
 }
 
 dateTime=`date "+%Y-%m-%d %H:%M:%S"`
-entry "zendu ${dateTime}" >> $fileName
+entry "zendu ${dateTime}" > $fileName
 
 for dir in ${dirs};
 do
