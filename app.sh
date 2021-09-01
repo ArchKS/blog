@@ -17,7 +17,6 @@ entry(){
   echo "" >> $fileName;
 }
 
-dateTime=`date "+%Y-%m-%d %H:%M:%S"`
 
 for dir in ${dirs};
 do
@@ -35,8 +34,8 @@ do
   entry " "
 done
 
-entry "> Last Update Zendu ${dateTime}"
-entry "> Total Articles ${fileCount}"
+dateTime=`date "+%Y-%m-%d %H:%M"`
+entry "> Last Update  ${dateTime} , ${fileCount} Articles"
 rm -f .*\.un~
 rm .DS_Store
 
