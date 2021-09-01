@@ -13,6 +13,7 @@ echo "\`\`\`text" > $file_name
 tree -N -L 2 | grep -Ev 'img|init|README' >> $file_name
 echo "\`\`\`" >> $file_name
 cp $file_name $file_name_bak
+rm $file_name
 
 while read line;do
   if [[ -n `echo "$line" | grep '\.md'` ]];then
