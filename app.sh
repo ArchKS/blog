@@ -7,6 +7,7 @@ export http_proxy=127.0.0.1:7776
 # 遍历目录下的文章
 
 dirs=`ls -d */ | sed "s#/##g"`
+fileCount=0
 fileName="README.md"
 rm -f $fileName
 
@@ -28,12 +29,14 @@ do
     path=$mk
     link="[$name](./${path})"
     entry $link
+    let fileCount++
   done
   entry " "
   entry " "
 done
 
 entry "> Last Update Zendu ${dateTime}"
+entry "> Total Articles ${fileCount}"
 rm -f .*\.un~
 rm .DS_Store
 
