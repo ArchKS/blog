@@ -35,8 +35,9 @@ do
 done
 
 # push to github
+echo -e "\n\n\n\n"
 git add .
-msg='zendu   '`date "+%Y-%m-%d %H:%M:%S"`;
+msg='zendu   '`date "+%Y-%m-%d %H:%M:%S"` 
 git commit -m "${msg}"
 git push
 
