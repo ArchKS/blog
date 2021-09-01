@@ -17,7 +17,6 @@ entry(){
 }
 
 dateTime=`date "+%Y-%m-%d %H:%M:%S"`
-entry "> Last Update Zendu ${dateTime}"
 
 for dir in ${dirs};
 do
@@ -33,6 +32,8 @@ do
   entry " "
   entry " "
 done
+
+entry "> Last Update Zendu ${dateTime}"
 
 # push to github
 echo "\n"
